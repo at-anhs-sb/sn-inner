@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shonen Nexus — Your Arc Starts Here</title>
+
+    <meta
+        name="description"
+        content="Welcome to Shonen Nexus. You joined. Now the real arc begins."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --black: #050505;
+            --black-soft: #0b0b0b;
+            --panel: #111111;
+            --panel-light: #171717;
+
+            --white: #f5f5f0;
+            --gray: #999994;
+            --dark-gray: #484844;
+
+            --orange: #ff5a1f;
+            --orange-light: #ff8149;
+
+            --cyan: #40dfff;
+            --red: #ff304f;
+
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(255, 90, 31, 0.07),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(64, 223, 255, 0.045),
+                    transparent 30%
+                ),
+                var(--black);
+
+            color: var(--white);
+
+            font-family: "Inter", sans-serif;
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           ATMOSPHERE
+           ========================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -2;
+
+            opacity: 0.045;
+
+            background-image:
+                radial-gradient(
+                    white 0.7px,
+                    transparent 0.7px
+                );
+
+            background-size: 6px 6px;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 150vw;
+            height: 1px;
+
+            top: 32%;
+            left: -25%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.15),
+                    transparent
+                );
+
+            transform: rotate(-9deg);
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: var(--orange);
+            color: #000;
+        }
+
+        /* =========================================
+           TOP BAR
+           ========================================= */
+
+        .topbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            border-bottom: 1px solid var(--border);
+
+            background: rgba(5, 5, 5, 0.9);
+
+            backdrop-filter: blur(16px);
+        }
+
+        .topbar-inner {
+            width: min(1180px, 92%);
+
+            min-height: 72px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: var(--orange);
+
+            color: #000;
+
+            font-size: 22px;
+
+            transform: skew(-8deg);
+
+            box-shadow: 4px 4px 0 #fff;
+        }
+
+        .brand span:last-child span {
+            color: var(--orange);
+        }
+
+        .status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #777772;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #5cff91;
+
+            box-shadow: 0 0 12px #5cff91;
+
+            animation: statusPulse 2s infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* =========================================
+           MAIN WRAPPER
+           ========================================= */
+
+        main {
+            width: min(1180px, 92%);
+
+            margin: auto;
+        }
+
+        /* =========================================
+           WELCOME / HERO
+           ========================================= */
+
+        .welcome {
+            position: relative;
+
+            padding: 110px 0 85px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .welcome::before {
+            content: "WELCOME";
+
+            position: absolute;
+
+            right: -70px;
+            top: 50px;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: clamp(100px, 17vw, 240px);
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            color: transparent;
+
+            -webkit-text-stroke: 1px rgba(255,255,255,0.025);
+
+            pointer-events: none;
+
+            white-space: nowrap;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+            color: var(--orange);
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "///";
+
+            color: var(--cyan);
+        }
+
+        .welcome h1 {
+            position: relative;
+
+            max-width: 850px;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: clamp(65px, 9vw, 120px);
+
+            line-height: .78;
+
+            letter-spacing: -4px;
+
+            text-transform: uppercase;
+
+            font-weight: 700;
+
+            z-index: 1;
+        }
+
+        .welcome h1 .orange {
+            color: var(--orange);
+        }
+
+        .welcome h1 .outline {
+            color: transparent;
+
+            -webkit-text-stroke: 1px #eee;
+        }
+
+        .welcome-intro {
+            position: relative;
+
+            max-width: 680px;
+
+            margin-top: 35px;
+
+            color: #92928d;
+
+            font-size: 15px;
+
+            line-height: 1.9;
+
+            z-index: 1;
+        }
+
+        .welcome-intro strong {
+            color: white;
+        }
+
+        /* =========================================
+           2AM MESSAGE
+           ========================================= */
+
+        .late-night {
+            position: relative;
+
+            margin-top: 45px;
+
+            max-width: 760px;
+
+            padding: 25px 30px;
+
+            border-left: 3px solid var(--orange);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,90,31,0.08),
+                    transparent
+                );
+        }
+
+        .late-night::before {
+            content: "02:17 AM";
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--cyan);
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .late-night p {
+            color: #b3b3ae;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        .late-night strong {
+            color: white;
+        }
+
+        /* =========================================
+           QUICK NAV
+           ========================================= */
+
+        .quick-nav {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-nav a {
+            padding: 9px 14px;
+
+            border: 1px solid var(--border);
+
+            color: #858580;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+
+            transition: .2s ease;
+        }
+
+        .quick-nav a:hover {
+            border-color: var(--orange);
+
+            color: var(--orange);
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           SECTION HEADER
+           ========================================= */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            margin-bottom: 15px;
+
+            color: var(--orange);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+        }
+
+        .section-label::before {
+            content: "✦";
+
+            margin-right: 9px;
+
+            color: var(--cyan);
+        }
+
+        .section h2 {
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: clamp(45px, 6vw, 72px);
+
+            line-height: .88;
+
+            letter-spacing: -2px;
+
+            text-transform: uppercase;
+        }
+
+        .section h2 span {
+            color: var(--orange);
+        }
+
+        .section-description {
+            max-width: 650px;
+
+            margin-top: 20px;
+
+            color: #858580;
+
+            font-size: 14px;
+        }
+
+        /* =========================================
+           THE NEXUS FEATURES
+           ========================================= */
+
+        .features {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-top: 55px;
+        }
+
+        .feature {
+            position: relative;
+
+            min-height: 235px;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #0b0b0b
+                );
+
+            border: 1px solid var(--border);
+
+            overflow: hidden;
+
+            transition: .25s ease;
+        }
+
+        .feature::after {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 2px;
+
+            right: -35px;
+            top: 25px;
+
+            background: var(--orange);
+
+            transform: rotate(45deg);
+
+            opacity: .5;
+        }
+
+        .feature:hover {
+            border-color: rgba(255,90,31,.55);
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                7px 7px 0 rgba(255,90,31,.08);
+        }
+
+        .feature:nth-child(even) {
+            border-color: rgba(64,223,255,.12);
+        }
+
+        .feature:nth-child(even)::after {
+            background: var(--cyan);
+        }
+
+        .feature-number {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            color: #41413d;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+        .feature-icon {
+            margin-bottom: 35px;
+
+            font-size: 27px;
+
+            color: var(--orange);
+        }
+
+        .feature:nth-child(even) .feature-icon {
+            color: var(--cyan);
+        }
+
+        .feature h3 {
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 25px;
+
+            line-height: 1;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .feature p {
+            margin-top: 12px;
+
+            color: #777772;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           2AM DIVIDER
+           ========================================= */
+
+        .thought {
+            position: relative;
+
+            padding: 80px 0;
+
+            text-align: center;
+        }
+
+        .thought-line {
+            width: 100%;
+
+            height: 1px;
+
+            margin-bottom: 45px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.15),
+                    transparent
+                );
+        }
+
+        .thought p {
+            max-width: 800px;
+
+            margin: auto;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: clamp(28px, 4vw, 48px);
+
+            font-weight: 600;
+
+            line-height: 1.05;
+
+            text-transform: uppercase;
+        }
+
+        .thought p span {
+            color: var(--orange);
+        }
+
+        .thought small {
+            display: block;
+
+            margin-top: 20px;
+
+            color: #555550;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           COMMUNITY / ANIME
+           ========================================= */
+
+        .anime-section {
+            display: grid;
+
+            grid-template-columns: .85fr 1.15fr;
+
+            gap: 70px;
+
+            align-items: start;
+        }
+
+        .anime-intro {
+            position: sticky;
+
+            top: 110px;
+        }
+
+        .anime-intro p {
+            margin-top: 25px;
+
+            color: #858580;
+
+            font-size: 13px;
+        }
+
+        .anime-list {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .anime-item {
+            display: grid;
+
+            grid-template-columns: 55px 1fr;
+
+            gap: 20px;
+
+            align-items: center;
+
+            padding: 22px;
+
+            background: #0d0d0d;
+
+            border: 1px solid var(--border);
+
+            transition: .2s ease;
+        }
+
+        .anime-item:hover {
+            background: #151515;
+
+            border-color: var(--orange);
+
+            transform: translateX(5px);
+        }
+
+        .anime-item-icon {
+            width: 50px;
+            height: 50px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid rgba(255,255,255,.13);
+
+            color: var(--orange);
+
+            font-size: 20px;
+
+            background: #080808;
+        }
+
+        .anime-item:nth-child(even) .anime-item-icon {
+            color: var(--cyan);
+        }
+
+        .anime-item h3 {
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 20px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
+        }
+
+        .anime-item p {
+            margin-top: 6px;
+
+            color: #6e6e69;
+
+            font-size: 11px;
+        }
+
+        /* =========================================
+           FINAL MESSAGE
+           ========================================= */
+
+        .final {
+            position: relative;
+
+            margin: 40px 0 100px;
+
+            padding: 90px 40px;
+
+            text-align: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,90,31,.09),
+                    transparent 65%
+                );
+
+            border-top: 1px solid var(--border);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .final::before {
+            content: "ARC";
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 25vw;
+
+            font-weight: 900;
+
+            color: transparent;
+
+            -webkit-text-stroke: 1px rgba(255,255,255,.025);
+
+            pointer-events: none;
+        }
+
+        .final-content {
+            position: relative;
+
+            z-index: 1;
+        }
+
+        .final h2 {
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: clamp(55px, 8vw, 100px);
+
+            line-height: .8;
+
+            text-transform: uppercase;
+
+            letter-spacing: -3px;
+        }
+
+        .final h2 span {
+            color: var(--orange);
+        }
+
+        .final p {
+            max-width: 650px;
+
+            margin: 25px auto;
+
+            color: #858580;
+
+            font-size: 14px;
+        }
+
+        .final-words {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+        .final-words span {
+            padding: 10px 15px;
+
+            border: 1px solid var(--border);
+
+            color: #aaa;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .final-words span:nth-child(1) {
+            color: var(--cyan);
+        }
+
+        .final-words span:nth-child(2) {
+            color: var(--orange);
+        }
+
+        .final-words span:nth-child(3) {
+            color: #fff;
+        }
+
+        .final-words span:nth-child(4) {
+            color: var(--orange-light);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+
+            background: #030303;
+        }
+
+        .footer-inner {
+            width: min(1180px, 92%);
+
+            min-height: 100px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+        .footer-brand span {
+            color: var(--orange);
+        }
+
+        .footer-message {
+            color: #4c4c48;
+
+            font-size: 10px;
+        }
+
+        .footer-time {
+            color: #3e3e3a;
+
+            font-family: "Rajdhani", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (max-width: 850px) {
+
+            .status {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .anime-section {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .anime-intro {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .topbar-inner {
+                min-height: 65px;
+            }
+
+            .brand {
+                font-size: 15px;
+            }
+
+            .brand-mark {
+                width: 32px;
+                height: 32px;
+
+                font-size: 19px;
+            }
+
+            .welcome {
+                padding-top: 75px;
+            }
+
+            .welcome h1 {
+                font-size: 62px;
+
+                letter-spacing: -2px;
+            }
+
+            .welcome-intro {
+                font-size: 13px;
+            }
+
+            .late-night {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .thought {
+                padding: 60px 0;
+            }
+
+            .anime-item {
+                grid-template-columns: 45px 1fr;
+
+                padding: 17px;
+            }
+
+            .anime-item-icon {
+                width: 42px;
+                height: 42px;
+            }
+
+            .final {
+                padding: 75px 20px;
+            }
+
+            .final h2 {
+                font-size: 58px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                justify-content: center;
+
+                padding: 30px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         TOP BAR
+         ========================================= -->
+
+    <header class="topbar">
+
+        <div class="topbar-inner">
+
+            <a href="#" class="brand">
+
+                <div class="brand-mark">
+                    N
+                </div>
+
+                <span>
+                    SHONEN <span>NEXUS</span>
+                </span>
+
+            </a>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Nexus Online
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             WELCOME
+             ========================================= -->
+
+        <section class="welcome">
+
+            <div class="eyebrow">
+                YOU MADE IT IN
+            </div>
+
+            <h1>
+                WELCOME TO
+                <br>
+                THE <span class="orange">NEXUS.</span>
+                <br>
+                <span class="outline">NOW WHAT?</span>
+            </h1>
+
+            <p class="welcome-intro">
+                You joined the club.
+                <strong>Congratulations.</strong>
+                <br><br>
+
+                Somewhere out there, a perfectly reasonable person is
+                sleeping right now.
+
+                Meanwhile, you're reading the welcome page of an anime
+                chess club at an hour that should probably not exist.
+                <br><br>
+
+                Honestly?
+                <strong>We respect it.</strong>
+            </p>
+
+
+            <div class="late-night">
+
+                <p>
+                    You didn't just click a button.
+                    You made a decision.
+                    <br><br>
+
+                    Maybe you came for the anime.
+                    Maybe you came for the chess.
+                    Maybe you saw "Shonen Nexus" and thought,
+                    <strong>"Yeah, that's probably a terrible idea."</strong>
+                    <br><br>
+
+                    You were right.
+                    <strong>Welcome.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             QUICK NAV
+             ========================================= -->
+
+        <div class="quick-nav">
+
+            <a href="#what-we-do">
+                The Nexus
+            </a>
+
+            <a href="#anime">
+                Anime
+            </a>
+
+            <a href="#community">
+                Community
+            </a>
+
+            <a href="#start">
+                Your Arc
+            </a>
+
+        </div>
+
+
+        <!-- =========================================
+             THE NEXUS
+             ========================================= -->
+
+        <section class="section" id="what-we-do">
+
+            <div class="section-label">
+                So... what happens here?
+            </div>
+
+            <h2>
+                THIS IS WHERE
+                <br>
+                THE <span>CHAOS</span> STARTS.
+            </h2>
+
+            <p class="section-description">
+                We've already got the forums.
+                The club exists.
+                You're already inside.
+                <br><br>
+
+                So don't stand in the doorway like an NPC waiting for
+                the next cutscene.
+                <strong>Go do something.</strong>
+            </p>
+
+
+            <div class="features">
+
+                <!-- 01 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <div class="feature-icon">
+                        ♟
+                    </div>
+
+                    <h3>
+                        Daily Tournaments
+                    </h3>
+
+                    <p>
+                        Compete regularly, sharpen your skills,
+                        and discover exactly how much your confidence
+                        was lying to you.
+                        <br><br>
+                        Win games. Lose games.
+                        Blame the opening.
+                        Repeat tomorrow.
+                    </p>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <div class="feature-icon">
+                        ⚔
+                    </div>
+
+                    <h3>
+                        Multi-Club Arenas
+                    </h3>
+
+                    <p>
+                        Represent the Nexus against other clubs.
+                        Team up, compete, and remind everyone that
+                        we're not just here to look cool.
+                        <br><br>
+                        Although looking cool is encouraged.
+                    </p>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <div class="feature-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Vote Chess
+                    </h3>
+
+                    <p>
+                        One board.
+                        One team.
+                        Approximately 47 different opinions.
+                        <br><br>
+                        Work together, debate moves, and discover
+                        whether democracy was a mistake.
+                    </p>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <div class="feature-icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Anime Discussions
+                    </h3>
+
+                    <p>
+                        Talk about the Big Three, Dragon Ball,
+                        JJK, Demon Slayer, JoJo, Hunter x Hunter,
+                        and whatever series has currently taken over
+                        your entire personality.
+                    </p>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        05
+                    </div>
+
+                    <div class="feature-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Events & Challenges
+                    </h3>
+
+                    <p>
+                        More tournaments.
+                        More competitions.
+                        More community events.
+                        More opportunities to say
+                        "I'm definitely winning this one."
+                        <br><br>
+                        We believe in you.
+                        Probably.
+                    </p>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article class="feature">
+
+                    <div class="feature-number">
+                        06
+                    </div>
+
+                    <div class="feature-icon">
+                        🌌
+                    </div>
+
+                    <h3>
+                        Every Generation
+                    </h3>
+
+                    <p>
+                        You might've started with the classics.
+                        You might've just discovered shonen yesterday.
+                        <br><br>
+                        Doesn't matter.
+                        If you love the genre,
+                        <strong>you belong in the Nexus.</strong>
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             2AM THOUGHT
+             ========================================= -->
+
+        <section class="thought">
+
+            <div class="thought-line"></div>
+
+            <p>
+                Maybe the real
+                <span>treasure</span>
+                was the people we met
+                while arguing about
+                <span>power scaling.</span>
+            </p>
+
+            <small>
+                It's 2:43 A.M. We should probably go to sleep.
+            </small>
+
+        </section>
+
+
+        <!-- =========================================
+             ANIME
+             ========================================= -->
+
+        <section class="section anime-section" id="anime">
+
+            <div class="anime-intro">
+
+                <div class="section-label">
+                    The important stuff
+                </div>
+
+                <h2>
+                    TALK
+                    <span>ANIME.</span>
+                </h2>
+
+                <p>
+                    The forums are already open.
+                    <br><br>
+
+                    You can post theories.
+                    Share recommendations.
+                    Defend your favorite character.
+                    Start an argument you absolutely did not need
+                    to start.
+                    <br><br>
+
+                    You know.
+                    <strong>Community.</strong>
+                </p>
+
+            </div>
+
+
+            <div class="anime-list">
+
+                <article class="anime-item">
+
+                    <div class="anime-item-icon">
+                        ⚡
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            The Big Three
+                        </h3>
+
+                        <p>
+                            One Piece • Naruto • Bleach
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="anime-item">
+
+                    <div class="anime-item-icon">
+                        🔥
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Classic Legends
+                        </h3>
+
+                        <p>
+                            Dragon Ball and the shows that built the foundation
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="anime-item">
+
+                    <div class="anime-item-icon">
+                        👁
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            New Generation
+                        </h3>
+
+                        <p>
+                            JJK • Demon Slayer • MHA • and whatever comes next
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="anime-item">
+
+                    <div class="anime-item-icon">
+                        🌀
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            The Weird Stuff
+                        </h3>
+
+                        <p>
+                            JoJo • Hunter x Hunter • and your "hear me out" picks
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="anime-item">
+
+                    <div class="anime-item-icon">
+                        💀
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Hot Takes
+                        </h3>
+
+                        <p>
+                            Enter at your own risk. We are not responsible for the arguments.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             COMMUNITY
+             ========================================= -->
+
+        <section class="section" id="community">
+
+            <div class="section-label">
+                The actual point of all this
+            </div>
+
+            <h2>
+                DON'T JUST
+                <br>
+                <span>WATCH.</span>
+                <br>
+                BE PART OF IT.
+            </h2>
+
+            <p class="section-description">
+
+                The Nexus isn't supposed to be a place where you join,
+                look around for five minutes, and disappear into the void.
+                <br><br>
+
+                Meet people.
+                Play games.
+                Start conversations.
+                Find someone who has the exact same favorite character
+                as you and immediately become best friends.
+                <br><br>
+
+                Or find someone who hates your favorite character.
+
+                <strong>
+                    That's probably more fun.
+                </strong>
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             FINAL ARC
+             ========================================= -->
+
+        <section class="final" id="start">
+
+            <div class="final-content">
+
+                <div class="section-label">
+                    You've already joined
+                </div>
+
+                <h2>
+                    YOUR
+                    <span>ARC</span>
+                    <br>
+                    STARTS NOW.
+                </h2>
+
+                <p>
+                    No more waiting for the protagonist to show up.
+                    <br><br>
+
+                    You're in the club.
+                    The forums are open.
+                    The tournaments are waiting.
+                    The arguments are inevitable.
+                    <br><br>
+
+                    So go ahead.
+
+                    Make a post.
+                    Challenge somebody.
+                    Drop your hottest take.
+                    Represent the Nexus.
+                    <br><br>
+
+                    And if it's 2 A.M. while you're doing it...
+
+                    <strong>
+                        even better.
+                    </strong>
+                </p>
+
+
+                <div class="final-words">
+
+                    <span>
+                        ♟ PLAY
+                    </span>
+
+                    <span>
+                        ⚔ COMPETE
+                    </span>
+
+                    <span>
+                        🔥 DISCUSS
+                    </span>
+
+                    <span>
+                        🌟 REPRESENT
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                SHONEN <span>NEXUS</span>
+            </div>
+
+            <div class="footer-message">
+                You joined at 2 A.M. We knew you were one of us.
+            </div>
+
+            <div class="footer-time" id="time">
+                00:00 AM
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /*
+         * The 2 A.M. clock.
+         * Because obviously we're going to encourage this.
+         */
+
+        function updateTime() {
+
+            const now = new Date();
+
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, "0");
+
+            const period = hours >= 12 ? "PM" : "AM";
+
+            hours = hours % 12 || 12;
+
+            document.getElementById("time").textContent =
+                `${hours}:${minutes} ${period}`;
+        }
+
+        updateTime();
+
+        setInterval(updateTime, 30000);
+
+
+        /*
+         * Tiny scroll reveal.
+         * Nothing dramatic.
+         * Just enough to make the panels feel alive.
+         */
+
+        const revealItems = document.querySelectorAll(
+            ".feature, .anime-item, .thought, .final"
+        );
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        revealItems.forEach((item) => {
+
+            item.style.opacity = "0";
+
+            item.style.transform =
+                "translateY(25px)";
+
+            item.style.transition =
+                "opacity .7s ease, transform .7s ease";
+
+            observer.observe(item);
+
+        });
+
+        const welcome = document.querySelector(".welcome");
+
+        document.addEventListener("mousemove", (event) => {
+
+            if (window.innerWidth < 800) return;
+
+            const x =
+                (event.clientX / window.innerWidth - 0.5) * 8;
+
+            const y =
+                (event.clientY / window.innerHeight - 0.5) * 8;
+
+            welcome.style.setProperty(
+                "--mouse-x",
+                `${x}px`
+            );
+
+            welcome.style.setProperty(
+                "--mouse-y",
+                `${y}px`
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
