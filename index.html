@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Shonen Nexus — Your Arc Starts Here</title>
-<meta name="description" content="Welcome to Shonen Nexus. Your arc starts here.">
+
+<title>Shonen Nexus — Enter the Nexus</title>
+<meta name="description" content="Welcome to Shonen Nexus. Chess, anime, manga, games, competition, and community.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -14,18 +17,31 @@
 --black:#080706;
 --black2:#100d0b;
 --ink:#18110d;
+
 --red:#a91520;
 --red2:#d32631;
 --red3:#681018;
+
 --cream:#eee2c7;
 --paper:#cdbd99;
+
 --gold:#b8934e;
 --gold2:#e0bd72;
+
 --gray:#82796b;
 --muted:#554e45;
+
 --moon:#d9d4c2;
---purple:#6d456e;
+
+--blue:#526f82;
+--blue2:#789db4;
+--blue3:#263e4f;
+--blue4:#0c151c;
+
+--tybw-red:#a8324d;
+
 --border:rgba(220,198,157,.16);
+--blue-border:rgba(100,135,157,.25);
 }
 
 *{
@@ -41,9 +57,9 @@ scroll-behavior:smooth;
 body{
 min-height:100vh;
 background:
-radial-gradient(circle at 75% 10%,rgba(217,212,194,.07),transparent 16%),
-radial-gradient(circle at 20% 60%,rgba(169,21,32,.08),transparent 30%),
-linear-gradient(180deg,#080706,#0c0908 45%,#050404);
+radial-gradient(circle at 78% 8%,rgba(217,212,194,.07),transparent 17%),
+radial-gradient(circle at 20% 55%,rgba(169,21,32,.08),transparent 30%),
+linear-gradient(180deg,#080706,#0b0908 45%,#050404);
 color:var(--cream);
 font-family:Inter,sans-serif;
 line-height:1.6;
@@ -78,10 +94,18 @@ color:inherit;
 text-decoration:none;
 }
 
+button{
+font:inherit;
+}
+
 ::selection{
 background:var(--red);
 color:#fff;
 }
+
+/* =========================
+   CURSOR
+========================= */
 
 #cursor{
 position:fixed;
@@ -114,6 +138,10 @@ height:30px!important;
 background:rgba(169,21,32,.1);
 }
 
+/* =========================
+   AMBIENCE
+========================= */
+
 #embers{
 position:fixed;
 inset:0;
@@ -138,12 +166,8 @@ animation:emberRise linear infinite;
 transform:translate3d(0,30px,0) scale(.3);
 opacity:0;
 }
-15%{
-opacity:.8;
-}
-80%{
-opacity:.45;
-}
+15%{opacity:.8}
+80%{opacity:.45}
 100%{
 transform:translate3d(var(--drift),-110vh,0) scale(1.3);
 opacity:0;
@@ -207,12 +231,16 @@ transform:translate3d(var(--x2),110vh,0) rotate(360deg);
 }
 }
 
+/* =========================
+   NAV
+========================= */
+
 .topbar{
 position:sticky;
 top:0;
 z-index:100;
 border-bottom:1px solid var(--border);
-background:rgba(8,7,6,.88);
+background:rgba(8,7,6,.9);
 backdrop-filter:blur(18px);
 }
 
@@ -253,7 +281,7 @@ box-shadow:3px 3px 0 #3d090d;
 transform:rotate(-45deg);
 }
 
-.brand span:last-child span{
+.brand > span > span{
 color:var(--red2);
 }
 
@@ -282,10 +310,18 @@ animation:statusPulse 2s infinite;
 50%{opacity:1}
 }
 
+/* =========================
+   MAIN
+========================= */
+
 main{
 width:min(1180px,92%);
 margin:auto;
 }
+
+/* =========================
+   HERO / ENTRANCE
+========================= */
 
 .welcome{
 position:relative;
@@ -298,7 +334,7 @@ overflow:hidden;
 }
 
 .welcome::before{
-content:"犬";
+content:"念";
 position:absolute;
 right:2%;
 top:50px;
@@ -326,6 +362,7 @@ box-shadow:0 0 15px rgba(169,21,32,.2);
 .hero-content{
 position:relative;
 z-index:5;
+transition:transform .15s ease;
 }
 
 .eyebrow{
@@ -457,6 +494,10 @@ box-shadow:
 left:140%;
 }
 
+/* =========================
+   QUICK NAV
+========================= */
+
 .quick-nav{
 display:flex;
 flex-wrap:wrap;
@@ -482,6 +523,10 @@ border-color:var(--red);
 color:var(--gold2);
 transform:translateY(-2px);
 }
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
 .section{
 padding:100px 0;
@@ -523,16 +568,482 @@ font-size:13px;
 line-height:1.9;
 }
 
-.features{
+/* =========================
+   NEXUS HUB
+========================= */
+
+.hub-section{
+padding-top:80px;
+}
+
+.hub-grid{
+display:grid;
+grid-template-columns:1.25fr .75fr;
+gap:15px;
+margin-top:50px;
+}
+
+.hub-panel{
+position:relative;
+overflow:hidden;
+background:#0a0e12;
+border:1px solid var(--blue-border);
+box-shadow:5px 5px 0 #050608;
+}
+
+.hub-panel::after{
+content:"";
+position:absolute;
+right:-70px;
+bottom:-70px;
+width:180px;
+height:180px;
+border:1px solid rgba(120,157,180,.08);
+transform:rotate(45deg);
+pointer-events:none;
+}
+
+.hub-main{
+padding:35px;
+}
+
+.hub-main::before{
+content:"";
+position:absolute;
+right:-60px;
+top:-55px;
+width:240px;
+height:170px;
+background:
+linear-gradient(
+135deg,
+transparent 34%,
+rgba(73,106,127,.13) 35%,
+rgba(73,106,127,.04) 54%,
+transparent 55%
+);
+transform:skewX(-24deg);
+}
+
+.hub-kicker{
+position:relative;
+z-index:2;
+font-family:Inter,sans-serif;
+font-size:9px;
+font-weight:900;
+letter-spacing:3.5px;
+color:#96b1c3;
+margin-bottom:10px;
+}
+
+.hub-title{
+position:relative;
+z-index:2;
+font-family:Georgia,"Times New Roman",serif;
+font-size:clamp(42px,6vw,70px);
+font-weight:900;
+letter-spacing:2px;
+line-height:.9;
+text-transform:uppercase;
+}
+
+.hub-title span{
+color:var(--tybw-red);
+}
+
+.hub-subtitle{
+position:relative;
+z-index:2;
+margin-top:13px;
+font-size:10px;
+font-weight:800;
+letter-spacing:2px;
+color:#718492;
+}
+
+.hub-links{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+margin-top:30px;
+}
+
+.hub-link{
+padding:18px;
+background:#0c141a;
+border:1px solid #293d4b;
+transition:.25s;
+}
+
+.hub-link:hover{
+background:#111d25;
+border-color:var(--blue2);
+transform:translateY(-4px);
+}
+
+.hub-link-icon{
+color:var(--tybw-red);
+font-family:"Noto Serif JP",serif;
+font-size:25px;
+}
+
+.hub-link:nth-child(2) .hub-link-icon{
+color:var(--gold2);
+}
+
+.hub-link:nth-child(3) .hub-link-icon{
+color:var(--blue2);
+}
+
+.hub-link strong{
+display:block;
+margin-top:10px;
+font-family:Cinzel,serif;
+font-size:13px;
+letter-spacing:1px;
+}
+
+.hub-link small{
+display:block;
+margin-top:5px;
+color:#63727d;
+font-size:9px;
+line-height:1.6;
+}
+
+.hub-status{
+padding:28px;
+background:#080d12;
+border-left:3px solid var(--tybw-red);
+}
+
+.hub-status-title{
+font-size:9px;
+font-weight:900;
+letter-spacing:3px;
+color:#96b1c3;
+}
+
+.online-number{
+margin-top:10px;
+font-family:Georgia,serif;
+font-size:55px;
+font-weight:900;
+line-height:1;
+color:#f2f4f6;
+}
+
+.online-label{
+margin-top:7px;
+font-size:8px;
+letter-spacing:2px;
+font-weight:900;
+color:#61717c;
+}
+
+.status-line{
+height:1px;
+margin:25px 0;
+background:linear-gradient(90deg,var(--tybw-red),transparent);
+}
+
+.status-row{
+display:flex;
+justify-content:space-between;
+gap:15px;
+font-size:9px;
+font-weight:800;
+letter-spacing:1px;
+color:#687985;
+}
+
+.status-row strong{
+color:#c7d0d6;
+}
+
+/* =========================
+   CURRENT ARC / TYBW
+========================= */
+
+.tybw{
+position:relative;
+margin-top:20px;
+padding:1px;
+background:linear-gradient(135deg,#a8324d,#57758c,#172630);
+}
+
+.tybw-inner{
+position:relative;
+overflow:hidden;
+background:#080d12;
+}
+
+.tybw-top{
+position:relative;
+padding:35px;
+border-bottom:1px solid #2b3c48;
+background:#0a1117;
+overflow:hidden;
+}
+
+.tybw-top::before{
+content:"TYBW";
+position:absolute;
+right:-15px;
+bottom:-28px;
+font-family:Georgia,serif;
+font-size:160px;
+font-weight:900;
+color:rgba(101,135,157,.045);
+letter-spacing:-10px;
+line-height:.8;
+}
+
+.tybw-kicker{
+position:relative;
+z-index:2;
+font-size:9px;
+font-weight:900;
+letter-spacing:3.5px;
+color:#96b1c3;
+}
+
+.tybw-title{
+position:relative;
+z-index:2;
+margin-top:15px;
+font-family:Georgia,"Times New Roman",serif;
+font-size:clamp(50px,8vw,88px);
+font-weight:900;
+letter-spacing:4px;
+line-height:.8;
+color:#f3f5f7;
+}
+
+.tybw-title span{
+color:var(--tybw-red);
+}
+
+.tybw-subtitle{
+position:relative;
+z-index:2;
+margin-top:15px;
+font-size:11px;
+font-weight:800;
+letter-spacing:1.5px;
+color:#aeb8c0;
+}
+
+.arc-bar{
+position:relative;
+z-index:2;
+display:flex;
+height:5px;
+margin-top:25px;
+background:#172630;
+}
+
+.arc-bar span:nth-child(1){
+width:43%;
+background:#a8324d;
+}
+
+.arc-bar span:nth-child(2){
+width:21%;
+background:#607f94;
+}
+
+.arc-bar span:nth-child(3){
+flex:1;
+background:#13202a;
+}
+
+.arc-meta{
+position:relative;
+z-index:2;
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:8px;
+font-weight:900;
+letter-spacing:2.5px;
+color:#718492;
+}
+
+.tybw-body{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.tybw-card{
+padding:28px 30px;
+background:#0b1218;
+border-right:1px solid #293b47;
+}
+
+.tybw-card:last-child{
+border-right:0;
+}
+
+.tybw-card-label{
+font-size:8px;
+font-weight:900;
+letter-spacing:2.5px;
+color:#8499a8;
+}
+
+.tybw-card h3{
+margin-top:10px;
+font-family:Georgia,serif;
+font-size:25px;
+line-height:1;
+text-transform:uppercase;
+}
+
+.tybw-card p{
+margin-top:10px;
+color:#667681;
+font-size:10px;
+line-height:1.7;
+}
+
+.tybw-button{
+display:inline-block;
+margin-top:18px;
+padding:9px 12px;
+border:1px solid #527084;
+background:#172630;
+color:#e8edf0;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+transition:.2s;
+}
+
+.tybw-button:hover{
+background:#789db4;
+color:#071017;
+transform:translate(2px,2px);
+}
+
+/* =========================
+   KEN
+========================= */
+
+.ken-section{
+margin-top:15px;
+}
+
+.ken-panel{
+position:relative;
+padding:35px;
+background:#0a1117;
+border:1px solid #293b47;
+overflow:hidden;
+}
+
+.ken-panel::before{
+content:"KEN";
+position:absolute;
+right:-20px;
+bottom:-40px;
+font-family:Georgia,serif;
+font-size:170px;
+font-weight:900;
+letter-spacing:-8px;
+color:rgba(120,157,180,.035);
+}
+
+.ken-kicker{
+position:relative;
+z-index:2;
+font-size:9px;
+font-weight:900;
+letter-spacing:3.5px;
+color:#96b1c3;
+}
+
+.ken-layout{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:.8fr 1.2fr;
+gap:40px;
+align-items:center;
+margin-top:20px;
+}
+
+.ken-value{
+font-family:Georgia,serif;
+font-size:clamp(60px,8vw,100px);
+font-weight:900;
+line-height:.8;
+letter-spacing:5px;
+color:#f4f6f8;
+}
+
+.ken-name{
+margin-top:12px;
+font-size:9px;
+font-weight:900;
+letter-spacing:2px;
+color:#718492;
+}
+
+.ken-description{
+color:#8999a5;
+font-size:11px;
+line-height:1.8;
+}
+
+.ken-actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.system-button{
+position:relative;
+display:inline-block;
+padding:10px 14px;
+border:1px solid #527084;
+background:#263e4f;
+color:#f4f7fa;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+transition:.2s;
+box-shadow:3px 3px 0 #05070a;
+}
+
+.system-button:hover{
+background:#789db4;
+color:#071017;
+transform:translate(2px,2px);
+box-shadow:1px 1px 0 #05070a;
+}
+
+/* =========================
+   GAMES
+========================= */
+
+.games{
+padding-top:100px;
+}
+
+.games-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
-margin-top:55px;
+margin-top:50px;
 }
 
-.feature{
+.game{
 position:relative;
-min-height:245px;
+min-height:250px;
 padding:30px;
 background:
 linear-gradient(145deg,rgba(255,255,255,.025),transparent 45%),
@@ -542,7 +1053,7 @@ overflow:hidden;
 transition:.3s;
 }
 
-.feature::before{
+.game::before{
 content:"";
 position:absolute;
 left:-45px;
@@ -554,7 +1065,7 @@ transform:rotate(-45deg);
 box-shadow:0 0 10px rgba(211,38,49,.4);
 }
 
-.feature::after{
+.game::after{
 content:"";
 position:absolute;
 right:-60px;
@@ -565,7 +1076,7 @@ border:1px solid rgba(184,147,78,.07);
 border-radius:50%;
 }
 
-.feature:hover{
+.game:hover{
 transform:translateY(-6px);
 border-color:rgba(184,147,78,.4);
 box-shadow:
@@ -573,7 +1084,7 @@ box-shadow:
 0 0 30px rgba(169,21,32,.06);
 }
 
-.feature-number{
+.game-number{
 position:absolute;
 right:20px;
 top:20px;
@@ -583,18 +1094,18 @@ font-size:12px;
 font-weight:800;
 }
 
-.feature-icon{
-margin-bottom:35px;
-color:var(--red2);
+.game-icon{
 font-family:"Noto Serif JP",serif;
-font-size:27px;
+font-size:32px;
+color:var(--red2);
+margin-bottom:25px;
 }
 
-.feature:nth-child(even) .feature-icon{
+.game:nth-child(even) .game-icon{
 color:var(--gold2);
 }
 
-.feature h3{
+.game h3{
 font-family:Cinzel,serif;
 font-size:21px;
 line-height:1;
@@ -602,12 +1113,27 @@ letter-spacing:1px;
 text-transform:uppercase;
 }
 
-.feature p{
+.game p{
 margin-top:13px;
+max-width:420px;
 color:#70685e;
 font-size:11px;
 line-height:1.75;
 }
+
+.game-tag{
+position:absolute;
+bottom:22px;
+right:25px;
+font-size:8px;
+font-weight:900;
+letter-spacing:2px;
+color:#514a42;
+}
+
+/* =========================
+   THOUGHT
+========================= */
 
 .thought{
 position:relative;
@@ -646,6 +1172,10 @@ font-weight:800;
 letter-spacing:3px;
 text-transform:uppercase;
 }
+
+/* =========================
+   ANIME
+========================= */
 
 .anime-section{
 display:grid;
@@ -716,6 +1246,102 @@ margin-top:6px;
 color:#625b52;
 font-size:10px;
 }
+
+/* =========================
+   ROLE SYSTEM
+========================= */
+
+.roles{
+margin-top:50px;
+padding:1px;
+background:linear-gradient(135deg,var(--tybw-red),#57758c,#18252e);
+}
+
+.roles-inner{
+position:relative;
+padding:35px;
+background:#080d12;
+overflow:hidden;
+}
+
+.roles-inner::before{
+content:"⚔";
+position:absolute;
+right:30px;
+top:10px;
+font-family:"Noto Serif JP",serif;
+font-size:120px;
+color:rgba(120,157,180,.035);
+}
+
+.roles-label{
+position:relative;
+z-index:2;
+font-size:9px;
+font-weight:900;
+letter-spacing:3px;
+color:#96b1c3;
+}
+
+.roles-title{
+position:relative;
+z-index:2;
+margin-top:10px;
+font-family:Georgia,serif;
+font-size:clamp(30px,5vw,55px);
+font-weight:900;
+line-height:.9;
+text-transform:uppercase;
+}
+
+.roles-title span{
+color:var(--tybw-red);
+}
+
+.roles-copy{
+position:relative;
+z-index:2;
+max-width:720px;
+margin-top:17px;
+color:#7d8d98;
+font-size:11px;
+line-height:1.8;
+}
+
+.role-list{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:25px;
+}
+
+.role{
+padding:18px;
+background:#0c141a;
+border:1px solid #293d4b;
+}
+
+.role strong{
+display:block;
+font-family:Cinzel,serif;
+font-size:11px;
+letter-spacing:1px;
+color:#dce2e7;
+}
+
+.role span{
+display:block;
+margin-top:5px;
+color:#687985;
+font-size:9px;
+line-height:1.5;
+}
+
+/* =========================
+   SNCLA
+========================= */
 
 .sncla{
 position:relative;
@@ -808,6 +1434,49 @@ font-size:10px;
 line-height:1.6;
 }
 
+/* =========================
+   COMMUNITY
+========================= */
+
+.community-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:45px;
+}
+
+.community-card{
+padding:30px;
+background:#0d0a09;
+border:1px solid var(--border);
+}
+
+.community-card h3{
+font-family:Cinzel,serif;
+font-size:22px;
+text-transform:uppercase;
+}
+
+.community-card p{
+margin-top:12px;
+color:#70685e;
+font-size:11px;
+line-height:1.8;
+}
+
+.community-card .mini{
+display:inline-block;
+margin-top:20px;
+color:var(--gold2);
+font-size:8px;
+font-weight:900;
+letter-spacing:2px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
 .final{
 position:relative;
 margin:40px 0 100px;
@@ -882,6 +1551,10 @@ letter-spacing:1.5px;
 .final-words span:nth-child(3){color:#d0c7b7}
 .final-words span:nth-child(4){color:#a86c73}
 
+/* =========================
+   FOOTER
+========================= */
+
 footer{
 border-top:1px solid var(--border);
 background:#050403;
@@ -919,6 +1592,10 @@ font-family:Cinzel,serif;
 font-size:10px;
 letter-spacing:1px;
 }
+
+/* =========================
+   MODAL
+========================= */
 
 .modal{
 position:fixed;
@@ -1053,6 +1730,10 @@ font-size:9px;
 letter-spacing:2px;
 }
 
+/* =========================
+   REVEAL
+========================= */
+
 .reveal{
 opacity:0;
 transform:translateY(30px);
@@ -1064,7 +1745,50 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+.hub-grid{
+grid-template-columns:1fr;
+}
+
+.hub-links{
+grid-template-columns:1fr;
+}
+
+.ken-layout{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.tybw-body{
+grid-template-columns:1fr;
+}
+
+.tybw-card{
+border-right:0;
+border-bottom:1px solid #293b47;
+}
+
+.tybw-card:last-child{
+border-bottom:0;
+}
+
+.role-list{
+grid-template-columns:1fr;
+}
+
+.community-grid{
+grid-template-columns:1fr;
+}
+
+}
+
 @media(max-width:850px){
+
 .moon{
 width:100px;
 height:100px;
@@ -1078,7 +1802,7 @@ left:23px;
 top:-8px;
 }
 
-.features{
+.games-grid{
 grid-template-columns:1fr;
 }
 
@@ -1098,6 +1822,7 @@ grid-template-columns:1fr;
 }
 
 @media(max-width:600px){
+
 body{
 cursor:auto;
 }
@@ -1146,6 +1871,31 @@ padding:20px;
 padding:75px 0;
 }
 
+.hub-main,
+.hub-status,
+.tybw-top,
+.tybw-card,
+.ken-panel,
+.roles-inner{
+padding:25px;
+}
+
+.tybw-title{
+font-size:50px;
+}
+
+.tybw-body{
+grid-template-columns:1fr;
+}
+
+.games-grid{
+gap:10px;
+}
+
+.game{
+min-height:230px;
+}
+
 .sncla-inner{
 padding:35px 25px;
 }
@@ -1163,6 +1913,7 @@ padding:30px 0;
 .modal-box{
 padding:35px 24px;
 }
+
 }
 </style>
 </head>
@@ -1174,20 +1925,39 @@ padding:35px 24px;
 <div class="sakura" id="sakura"></div>
 <div class="moon"></div>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <header class="topbar">
+
 <div class="topbar-inner">
+
 <a href="#" class="brand">
-<div class="brand-mark"><span>念</span></div>
-<span>SHONEN <span>NEXUS</span></span>
+<div class="brand-mark">
+<span>念</span>
+</div>
+
+<span>
+SHONEN <span>NEXUS</span>
+</span>
 </a>
+
 <div class="status">
 <span class="status-dot"></span>
 Nexus Online
 </div>
+
 </div>
+
 </header>
 
+
 <main>
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="welcome">
 
@@ -1206,32 +1976,57 @@ the <span class="red">Nexus.</span>
 </h1>
 
 <p class="welcome-intro">
+
 You joined the club.
-<strong>Now the real journey begins.</strong>
+
+<strong>
+Now the real journey begins.
+</strong>
+
 <br><br>
-Somewhere out there, someone is probably arguing about
+
+Somewhere out there, someone is arguing about
 power scaling, someone else is blundering their queen,
 and somebody is absolutely convinced they can beat the
 strongest player in the club.
+
 <br><br>
+
 You're one of us now.
-<strong>Try not to get eaten by a demon.</strong>
+
+<strong>
+Try not to get eaten by a demon.
+</strong>
+
 </p>
 
 <div class="late-night">
+
 <p>
+
 The Nexus isn't just a club.
-It's a gathering place for people who love anime,
-chess, competition, and the beautiful chaos that happens
-when all three collide.
+
+It's a gathering place for people who love
+<strong>anime, chess, games, competition, and community.</strong>
+
 <br><br>
+
+There are games to play.
+Anime arcs to enter.
+KEN to earn.
+Roles to claim.
+Clubs to battle.
+
+<br><br>
+
 So step through the gate.
-Meet the people.
-Play some games.
-Start some arguments.
-Find your comrades.
-<strong>Your story starts here.</strong>
+
+<strong>
+Your story starts here.
+</strong>
+
 </p>
+
 </div>
 
 <button class="enter-button" id="welcomeButton">
@@ -1242,15 +2037,53 @@ Find your comrades.
 
 </section>
 
+
+<!-- =========================
+     QUICK NAV
+========================= -->
+
 <div class="quick-nav">
-<a href="#nexus">The Nexus</a>
-<a href="#anime">Anime</a>
-<a href="#sncla">SNCLA</a>
-<a href="#community">Community</a>
-<a href="#start">Your Arc</a>
+
+<a href="#hub">
+Nexus Hub
+</a>
+
+<a href="#games">
+Games
+</a>
+
+<a href="#anime">
+Anime
+</a>
+
+<a href="#tybw">
+Current Arc
+</a>
+
+<a href="#ken">
+KEN
+</a>
+
+<a href="#roles">
+Roles
+</a>
+
+<a href="#sncla">
+SNCLA
+</a>
+
+<a href="#start">
+Your Arc
+</a>
+
 </div>
 
-<section class="section reveal" id="nexus">
+
+<!-- =========================
+     NEXUS HUB
+========================= -->
+
+<section class="section hub-section reveal" id="hub">
 
 <div class="section-label">
 The village awaits
@@ -1263,103 +2096,491 @@ the <span>chaos</span> begins.
 </h2>
 
 <p class="section-description">
-We've got tournaments.
-We've got anime discussions.
-We've got club battles.
-We've got people who will confidently explain why their
-favorite character would beat yours.
+
+Welcome to the Nexus Hub.
+
+This is where chess, anime, manga, games,
+competition and community all collide.
+
 <br><br>
-Basically, you're going to fit right in.
+
+Pick an activity.
+Find your people.
+Enter the current arc.
+
 </p>
 
-<div class="features">
 
-<article class="feature">
-<div class="feature-number">01</div>
-<div class="feature-icon">刀</div>
-<h3>Daily Tournaments</h3>
+<div class="hub-grid">
+
+<div class="hub-panel hub-main">
+
+<div class="hub-kicker">
+SHONEN NEXUS / COMMUNITY
+</div>
+
+<div class="hub-title">
+NEXUS <span>HUB</span>
+</div>
+
+<div class="hub-subtitle">
+CHESS &nbsp;/&nbsp; ANIME &nbsp;/&nbsp; MANGA &nbsp;/&nbsp; GAMES
+</div>
+
+
+<div class="hub-links">
+
+<a class="hub-link" href="#games">
+
+<div class="hub-link-icon">
+棋
+</div>
+
+<strong>
+CHESS
+</strong>
+
+<small>
+Boards, tournaments,
+club battles and strategy.
+</small>
+
+</a>
+
+
+<a class="hub-link" href="#anime">
+
+<div class="hub-link-icon">
+妖
+</div>
+
+<strong>
+ANIME
+</strong>
+
+<small>
+Discussions, theories,
+recommendations and arcs.
+</small>
+
+</a>
+
+
+<a class="hub-link" href="#games">
+
+<div class="hub-link-icon">
+魂
+</div>
+
+<strong>
+GAMES
+</strong>
+
+<small>
+Community games,
+challenges and competitions.
+</small>
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hub-panel hub-status">
+
+<div class="hub-status-title">
+NEXUS STATUS
+</div>
+
+<div class="online-number">
+ONLINE
+</div>
+
+<div class="online-label">
+THE VILLAGE IS ACTIVE
+</div>
+
+<div class="status-line"></div>
+
+<div class="status-row">
+<span>CURRENT ARC</span>
+<strong>TYBW</strong>
+</div>
+
+<div class="status-row">
+<span>COMMUNITY</span>
+<strong>ACTIVE</strong>
+</div>
+
+<div class="status-row">
+<span>LEAGUE</span>
+<strong>SNCLA</strong>
+</div>
+
+<div class="status-row">
+<span>CURRENCY</span>
+<strong>KEN</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CURRENT TYBW ARC
+========================= -->
+
+<section class="section reveal" id="tybw">
+
+<div class="section-label">
+The current anime arc
+</div>
+
+<h2>
+The war
+<br>
+<span>continues.</span>
+</h2>
+
+<p class="section-description">
+
+The Nexus is currently running its
+Bleach-inspired Thousand-Year Blood War arc.
+
+Enter the current storyline,
+take a role, follow the battles,
+and become part of the community's running arc.
+
+</p>
+
+
+<div class="tybw">
+
+<div class="tybw-inner">
+
+<div class="tybw-top">
+
+<div class="tybw-kicker">
+⚔ CURRENT ARC / TYBW
+</div>
+
+<div class="tybw-title">
+BLEACH <span>:</span>
+</div>
+
+<div class="tybw-subtitle">
+THOUSAND-YEAR BLOOD WAR — CURRENT COUR
+</div>
+
+<div class="arc-bar">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="arc-meta">
+<span>ANIME ARC</span>
+<span>WANDENREICH</span>
+</div>
+
+</div>
+
+
+<div class="tybw-body">
+
+<div class="tybw-card">
+
+<div class="tybw-card-label">
+CURRENT STORY
+</div>
+
+<h3>
+Enter the Arc
+</h3>
+
 <p>
-Sharpen your skills, test your strategy, and discover
-exactly how long your confidence survives against
-someone who actually knows the opening.
+The current Nexus anime arc is built around
+the Thousand-Year Blood War theme.
+
+Follow the story, participate in community
+events, and see how your role fits into the arc.
 </p>
+
+<a href="#roles" class="tybw-button">
+VIEW ROLES →
+</a>
+
+</div>
+
+
+<div class="tybw-card">
+
+<div class="tybw-card-label">
+COMMUNITY DISCUSSION
+</div>
+
+<h3>
+Talk Bleach
+</h3>
+
+<p>
+Discuss characters, battles, theories,
+power scaling, predictions and everything
+else that inevitably starts an argument.
+</p>
+
+<a href="#anime" class="tybw-button">
+ENTER DISCUSSION →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GAMES
+========================= -->
+
+<section class="section games reveal" id="games">
+
+<div class="section-label">
+Choose your battlefield
+</div>
+
+<h2>
+Games.
+<br>
+<span>Competition.</span>
+</h2>
+
+<p class="section-description">
+
+The Nexus isn't just somewhere to talk.
+
+It's somewhere to play.
+
+Whether you're here for chess,
+team strategy, club battles or community challenges,
+there is always another game waiting.
+
+</p>
+
+
+<div class="games-grid">
+
+<article class="game">
+
+<div class="game-number">
+01
+</div>
+
+<div class="game-icon">
+♟
+</div>
+
+<h3>
+Chess
+</h3>
+
+<p>
+Play chess with the community,
+test your skills, enter tournaments,
+and find out whether your opening
+actually works outside the YouTube video.
+</p>
+
+<div class="game-tag">
+BOARD / STRATEGY
+</div>
+
 </article>
 
-<article class="feature">
-<div class="feature-number">02</div>
-<div class="feature-icon">魂</div>
-<h3>Club Battles</h3>
+
+<article class="game">
+
+<div class="game-number">
+02
+</div>
+
+<div class="game-icon">
+棋
+</div>
+
+<h3>
+Vote Chess
+</h3>
+
 <p>
-Represent the Nexus against other clubs and fight for
-victory, bragging rights, and the sacred privilege of
-saying "we told you so."
+One board.
+
+One team.
+
+Many opinions.
+
+Work together to decide every move
+and discover whether democracy
+can survive a chess position.
 </p>
+
+<div class="game-tag">
+TEAM / COMMUNITY
+</div>
+
 </article>
 
-<article class="feature">
-<div class="feature-number">03</div>
-<div class="feature-icon">棋</div>
-<h3>Vote Chess</h3>
+
+<article class="game">
+
+<div class="game-number">
+03
+</div>
+
+<div class="game-icon">
+戦
+</div>
+
+<h3>
+Club Battles
+</h3>
+
 <p>
-One board. One team. Many opinions.
-Work together to decide the moves and find out whether
-democracy can actually survive a chess position.
+Represent Shonen Nexus against
+rival clubs.
+
+Fight for the win,
+the bragging rights,
+and the sacred privilege of saying
+"we told you so."
 </p>
+
+<div class="game-tag">
+CLUB / COMPETITIVE
+</div>
+
 </article>
 
-<article class="feature">
-<div class="feature-number">04</div>
-<div class="feature-icon">妖</div>
-<h3>Anime Discussions</h3>
-<p>
-Talk about the classics, the new generation, hidden gems,
-terrible takes, amazing takes, and the one character
-everyone agrees is completely broken.
-</p>
-</article>
 
-<article class="feature">
-<div class="feature-number">05</div>
-<div class="feature-icon">炎</div>
-<h3>Events & Challenges</h3>
-<p>
-Competitions, community events, special challenges,
-and plenty of opportunities to turn a normal evening
-into a full-blown arc.
-</p>
-</article>
+<article class="game">
 
-<article class="feature">
-<div class="feature-number">06</div>
-<div class="feature-icon">月</div>
-<h3>Every Generation</h3>
+<div class="game-number">
+04
+</div>
+
+<div class="game-icon">
+炎
+</div>
+
+<h3>
+Challenges
+</h3>
+
 <p>
-Whether you've watched anime for twenty years or just
-discovered your first shonen yesterday, there is a place
-for you here.
+Special challenges,
+community events,
+mini competitions,
+and whatever ridiculous idea
+the village comes up with next.
 </p>
+
+<div class="game-tag">
+EVENT / COMMUNITY
+</div>
+
 </article>
 
 </div>
 
 </section>
 
-<section class="thought reveal">
 
-<div class="thought-line"></div>
+<!-- =========================
+     KEN
+========================= -->
 
-<p>
-Maybe the real treasure
-was the friends we made
-while arguing about
-<span>who wins.</span>
-</p>
+<section class="section reveal ken-section" id="ken">
 
-<small>
-The village is quiet. The forums are not.
-</small>
+<div class="section-label">
+The currency of the Nexus
+</div>
+
+<h2>
+Earn.
+<br>
+<span>Spend.</span>
+<br>
+Rise.
+</h2>
+
+
+<div class="ken-panel">
+
+<div class="ken-kicker">
+◈ NEXUS CURRENCY / SYSTEM
+</div>
+
+<div class="ken-layout">
+
+<div>
+
+<div class="ken-value">
+KEN
+</div>
+
+<div class="ken-name">
+CURRENCY OF THE NEXUS
+</div>
+
+</div>
+
+
+<div>
+
+<div class="ken-description">
+
+KEN is the community currency of Shonen Nexus.
+
+Use it as part of the Nexus progression system,
+earn it through participation, and keep an eye
+on what the village decides to build around it.
+
+</div>
+
+<div class="ken-actions">
+
+<a class="system-button" href="#">
+◈ KEN EXCHANGE
+</a>
+
+<a class="system-button" href="#">
+KEN RULES
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+
+<!-- =========================
+     ANIME
+========================= -->
 
 <section class="section anime-section reveal" id="anime">
 
@@ -1375,111 +2596,390 @@ Talk
 </h2>
 
 <p>
+
 The forums are open.
+
 <br><br>
+
 Post theories.
 Share recommendations.
 Defend your favorite character.
 Start a completely unnecessary argument.
+
 <br><br>
+
 You know.
-<strong>Community.</strong>
+
+<strong>
+Community.
+</strong>
+
 </p>
 
 </div>
 
+
 <div class="anime-list">
 
 <article class="anime-item">
-<div class="anime-item-icon">犬</div>
-<div>
-<h3>Classic Legends</h3>
-<p>Inuyasha • Dragon Ball • Naruto • Bleach</p>
+
+<div class="anime-item-icon">
+犬
 </div>
+
+<div>
+
+<h3>
+Classic Legends
+</h3>
+
+<p>
+Inuyasha • Dragon Ball • Naruto • Bleach
+</p>
+
+</div>
+
 </article>
 
-<article class="anime-item">
-<div class="anime-item-icon">月</div>
-<div>
-<h3>The New Generation</h3>
-<p>JJK • Demon Slayer • MHA • and whatever comes next</p>
-</div>
-</article>
 
 <article class="anime-item">
-<div class="anime-item-icon">妖</div>
-<div>
-<h3>The Weird Stuff</h3>
-<p>JoJo • Hunter x Hunter • and your "hear me out" picks</p>
+
+<div class="anime-item-icon">
+月
 </div>
+
+<div>
+
+<h3>
+The New Generation
+</h3>
+
+<p>
+JJK • Demon Slayer • MHA • and whatever comes next
+</p>
+
+</div>
+
 </article>
 
-<article class="anime-item">
-<div class="anime-item-icon">狐</div>
-<div>
-<h3>Hidden Gems</h3>
-<p>The shows nobody talks about until somebody makes you watch them</p>
-</div>
-</article>
 
 <article class="anime-item">
-<div class="anime-item-icon">火</div>
-<div>
-<h3>Hot Takes</h3>
-<p>Enter at your own risk. Bring armor.</p>
+
+<div class="anime-item-icon">
+妖
 </div>
+
+<div>
+
+<h3>
+The Weird Stuff
+</h3>
+
+<p>
+JoJo • Hunter x Hunter • and your "hear me out" picks
+</p>
+
+</div>
+
+</article>
+
+
+<article class="anime-item">
+
+<div class="anime-item-icon">
+狐
+</div>
+
+<div>
+
+<h3>
+Hidden Gems
+</h3>
+
+<p>
+The shows nobody talks about until somebody makes you watch them
+</p>
+
+</div>
+
+</article>
+
+
+<article class="anime-item">
+
+<div class="anime-item-icon">
+火
+</div>
+
+<div>
+
+<h3>
+Hot Takes
+</h3>
+
+<p>
+Enter at your own risk. Bring armor.
+</p>
+
+</div>
+
 </article>
 
 </div>
 
 </section>
 
+
+<!-- =========================
+     ROLE SYSTEM
+========================= -->
+
+<section class="section reveal" id="roles">
+
+<div class="section-label">
+Choose your place in the story
+</div>
+
+<h2>
+Enter the
+<br>
+<span>current arc.</span>
+</h2>
+
+
+<div class="roles">
+
+<div class="roles-inner">
+
+<div class="roles-label">
+⚔ CURRENT ARC / ROLE SYSTEM
+</div>
+
+<div class="roles-title">
+Choose your
+<span>role.</span>
+</div>
+
+<div class="roles-copy">
+
+The current anime arc isn't something you only watch.
+
+Become part of it.
+
+Choose a role, represent your character,
+and participate in the community storyline.
+
+</div>
+
+
+<div class="role-list">
+
+<div class="role">
+
+<strong>
+SOUL REAPER
+</strong>
+
+<span>
+Protect the balance.
+Carry the blade.
+Enter the battlefield.
+</span>
+
+</div>
+
+
+<div class="role">
+
+<strong>
+QUINCY
+</strong>
+
+<span>
+Choose your allegiance.
+The war has already begun.
+</span>
+
+</div>
+
+
+<div class="role">
+
+<strong>
+HOLLOW
+</strong>
+
+<span>
+Embrace the chaos.
+Not every arc needs a hero.
+</span>
+
+</div>
+
+
+<div class="role">
+
+<strong>
+CAPTAIN
+</strong>
+
+<span>
+Lead your division.
+Represent your side.
+</span>
+
+</div>
+
+
+<div class="role">
+
+<strong>
+SPECIAL ROLE
+</strong>
+
+<span>
+Some roles don't fit neatly
+inside the normal divisions.
+</span>
+
+</div>
+
+
+<div class="role">
+
+<strong>
+CUSTOM ARC
+</strong>
+
+<span>
+Your story doesn't have
+to follow the obvious path.
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     THOUGHT
+========================= -->
+
+<section class="thought reveal">
+
+<div class="thought-line"></div>
+
+<p>
+
+Maybe the real treasure
+was the friends we made
+while arguing about
+<span>who wins.</span>
+
+</p>
+
+<small>
+The village is quiet. The forums are not.
+</small>
+
+</section>
+
+
+<!-- =========================
+     SNCLA
+========================= -->
+
 <section class="sncla reveal" id="sncla">
 
 <div class="sncla-inner">
 
-<div class="sncla-symbol">戦</div>
+<div class="sncla-symbol">
+戦
+</div>
 
 <div class="section-label">
 The great club battle
 </div>
 
 <h2>
+
 Shonen Nexus
 <br>
+
 Club League <span>Arc.</span>
+
 </h2>
 
 <p>
+
 <strong>SNCLA</strong> stands for
 <strong>Shonen Nexus Club League Arc</strong>.
+
 It's our club-versus-club competition where the Nexus
 goes head-to-head against other chess clubs in full-on
 competitive arcs.
+
 <br><br>
+
 The league is <strong>hosted by Shonen Nexus</strong>,
 bringing clubs together to compete, represent their
 communities, and fight for the win.
+
 <br><br>
+
 Think of it as a tournament with an anime arc attached.
-<strong>Except the battles are real.</strong>
+
+<strong>
+Except the battles are real.
+</strong>
+
 </p>
+
 
 <div class="sncla-grid">
 
 <div class="sncla-card">
-<strong>CLUB VS CLUB</strong>
-<span>Represent your club against rival communities.</span>
+
+<strong>
+CLUB VS CLUB
+</strong>
+
+<span>
+Represent your club against rival communities.
+</span>
+
 </div>
 
-<div class="sncla-card">
-<strong>COMPETITIVE ARCS</strong>
-<span>Each league battle becomes part of the larger story.</span>
-</div>
 
 <div class="sncla-card">
-<strong>HOSTED BY SN</strong>
-<span>Shonen Nexus organizes and hosts the league.</span>
+
+<strong>
+COMPETITIVE ARCS
+</strong>
+
+<span>
+Each league battle becomes part of the larger story.
+</span>
+
+</div>
+
+
+<div class="sncla-card">
+
+<strong>
+HOSTED BY SN
+</strong>
+
+<span>
+Shonen Nexus organizes and hosts the league.
+</span>
+
 </div>
 
 </div>
@@ -1487,6 +2987,11 @@ Think of it as a tournament with an anime arc attached.
 </div>
 
 </section>
+
+
+<!-- =========================
+     COMMUNITY
+========================= -->
 
 <section class="section reveal" id="community">
 
@@ -1495,30 +3000,102 @@ The reason we stay
 </div>
 
 <h2>
+
 Don't just
 <br>
+
 <span>watch.</span>
+
 <br>
+
 Be part of it.
+
 </h2>
 
+
 <p class="section-description">
+
 The Nexus isn't supposed to be a place where you join,
 look around for five minutes, and disappear into the forest.
+
 <br><br>
+
 Meet people.
 Play games.
 Make friends.
 Challenge somebody.
+
 Find someone who has the exact same favorite character
 as you and immediately become comrades.
+
 <br><br>
+
 Or find someone who thinks your favorite character is
 overrated.
-<strong>That's probably more fun.</strong>
+
+<strong>
+That's probably more fun.
+</strong>
+
 </p>
 
+
+<div class="community-grid">
+
+<div class="community-card">
+
+<h3>
+Find Your People
+</h3>
+
+<p>
+Anime fans.
+Chess players.
+Competitive players.
+Casual players.
+Lore addicts.
+Power scalers.
+
+There's room for all of them.
+</p>
+
+<span class="mini">
+THE VILLAGE IS BIG
+</span>
+
+</div>
+
+
+<div class="community-card">
+
+<h3>
+Make Your Arc
+</h3>
+
+<p>
+Your contribution doesn't have to be
+a tournament win.
+
+It could be a great game,
+a ridiculous debate,
+a new friendship,
+or the next community idea.
+</p>
+
+<span class="mini">
+EVERYONE HAS A ROLE
+</span>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
 
 <section class="final reveal" id="start">
 
@@ -1529,34 +3106,69 @@ The sacred jewel has chosen you
 </div>
 
 <h2>
+
 Your
 <span>Arc</span>
+
 <br>
+
 Starts Now.
+
 </h2>
 
+
 <p>
+
 No more waiting for the protagonist.
+
 No more standing at the edge of the village.
+
 <br><br>
+
 You're already inside.
-The tournaments are waiting.
+
+The games are waiting.
 The forums are open.
+The current anime arc is running.
+KEN is in circulation.
 The SNCLA is calling.
 The arguments are inevitable.
+
 <br><br>
+
 So draw your sword.
+
 Pick your side.
+
 Make your move.
+
 <br><br>
-<strong>And whatever you do, don't lose the jewel.</strong>
+
+<strong>
+And whatever you do, don't lose the jewel.
+</strong>
+
 </p>
 
+
 <div class="final-words">
-<span>刀 Play</span>
-<span>戦 Compete</span>
-<span>妖 Discuss</span>
-<span>月 Represent</span>
+
+<span>
+刀 Play
+</span>
+
+<span>
+戦 Compete
+</span>
+
+<span>
+妖 Discuss
+</span>
+
+<span>
+月 Represent
+</span>
+
 </div>
 
 </div>
@@ -1564,6 +3176,11 @@ Make your move.
 </section>
 
 </main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1578,18 +3195,25 @@ Your arc starts here.
 </div>
 
 <div class="footer-time" id="time">
-00:00 AM
+00:00:00 AM
 </div>
 
 </div>
 
 </footer>
 
+
+<!-- =========================
+     WELCOME MODAL
+========================= -->
+
 <div class="modal" id="welcomeModal">
 
 <div class="modal-box">
 
-<button class="close" id="closeModal">×</button>
+<button class="close" id="closeModal">
+×
+</button>
 
 <div class="modal-label">
 A message from the village
@@ -1601,64 +3225,117 @@ Welcome,
 </h2>
 
 <p>
+
 You've officially entered the Shonen Nexus.
+
 Before you wander into the forest and accidentally
 start a boss fight, here's what you should know.
+
 </p>
+
 
 <div class="rules">
 
 <div class="rule">
 <strong>01 — Respect your comrades.</strong>
+
 Everyone is here to enjoy anime, chess, competition,
 and the community. Don't ruin somebody else's arc.
+
 </div>
+
 
 <div class="rule">
 <strong>02 — Play fair.</strong>
+
 No cheating, no exploiting, no nonsense.
-Win because you're good, not because you found a loophole.
+
+Win because you're good,
+not because you found a loophole.
+
 </div>
+
 
 <div class="rule">
 <strong>03 — Keep the debates fun.</strong>
+
 Anime arguments are encouraged.
 Personal attacks are not.
-There's a difference between "your take is terrible"
+
+There's a difference between
+"your take is terrible"
 and actually being terrible to someone.
+
 </div>
+
 
 <div class="rule">
 <strong>04 — Represent the Nexus.</strong>
+
 When you're competing under the Shonen Nexus banner,
 play with the same respect you'd expect from everyone else.
+
 </div>
+
 
 <div class="rule">
 <strong>05 — Have fun.</strong>
+
 This is a community, not a second job.
-Play games. Make friends. Talk anime.
+
+Play games.
+Make friends.
+Talk anime.
+
 Enjoy the arc.
+
 </div>
 
 </div>
+
 
 <div class="modal-divider"></div>
 
+
 <div class="modal-label">
-SNCLA — Shonen Nexus Club League Arc
+CURRENT ARC — TYBW
 </div>
 
 <p>
+
+The current Nexus anime arc is inspired by
+the Thousand-Year Blood War.
+
+Choose your role.
+Join the discussion.
+Represent your side.
+
+<br><br>
+
+And when you're ready,
+step into the larger Nexus community.
+
+</p>
+
+
+<div class="modal-divider"></div>
+
+
+<div class="modal-label">
+SNCLA — SHONEN NEXUS CLUB LEAGUE ARC
+</div>
+
+<p>
+
 SNCLA is our club league where Shonen Nexus competes
 against other chess clubs in organized competitive arcs.
+
 The league is <strong>hosted by us</strong>, bringing clubs
-together for battles, rivalries, teamwork, and some
+together for battles, rivalries, teamwork, and
 seriously fun competition.
-<br><br>
-If you want to represent the Nexus, this is where things
-get interesting.
+
 </p>
+
 
 <div class="modal-scan">
 THE GATE IS OPEN — ENTER YOUR ARC
@@ -1668,7 +3345,13 @@ THE GATE IS OPEN — ENTER YOUR ARC
 
 </div>
 
+
 <script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
 const cursor=document.getElementById("cursor");
 const modal=document.getElementById("welcomeModal");
 const welcomeButton=document.getElementById("welcomeButton");
@@ -1677,173 +3360,415 @@ const embers=document.getElementById("embers");
 const sakura=document.getElementById("sakura");
 const time=document.getElementById("time");
 
+
+/* =========================
+   CURSOR
+========================= */
+
 document.addEventListener("mousemove",e=>{
+
 cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
+
 });
 
-document.querySelectorAll("a,button,.feature,.anime-item").forEach(el=>{
-el.addEventListener("mouseenter",()=>cursor.classList.add("cursor-active"));
-el.addEventListener("mouseleave",()=>cursor.classList.remove("cursor-active"));
+
+document.querySelectorAll(
+"a,button,.game,.anime-item,.hub-link,.community-card,.role"
+).forEach(el=>{
+
+el.addEventListener("mouseenter",()=>{
+cursor.classList.add("cursor-active");
 });
+
+el.addEventListener("mouseleave",()=>{
+cursor.classList.remove("cursor-active");
+});
+
+});
+
+
+/* =========================
+   MODAL
+========================= */
 
 welcomeButton.addEventListener("click",()=>{
+
 modal.classList.add("open");
 document.body.style.overflow="hidden";
+
 });
+
 
 closeModal.addEventListener("click",()=>{
+
 modal.classList.remove("open");
 document.body.style.overflow="";
+
 });
+
 
 modal.addEventListener("click",e=>{
+
 if(e.target===modal){
+
 modal.classList.remove("open");
 document.body.style.overflow="";
+
 }
+
 });
+
 
 document.addEventListener("keydown",e=>{
+
 if(e.key==="Escape"){
+
 modal.classList.remove("open");
 document.body.style.overflow="";
+
 }
+
 });
 
+
+/* =========================
+   EMBERS
+========================= */
+
 for(let i=0;i<65;i++){
+
 const ember=document.createElement("div");
+
 ember.className="ember";
+
 ember.style.left=Math.random()*100+"%";
-ember.style.top=(70+Math.random()*40)+"%";
-ember.style.setProperty("--drift",(Math.random()*180-90)+"px");
-ember.style.animationDuration=(5+Math.random()*10)+"s";
-ember.style.animationDelay=(-Math.random()*12)+"s";
+
+ember.style.top=
+(70+Math.random()*40)+"%";
+
+ember.style.setProperty(
+"--drift",
+(Math.random()*180-90)+"px"
+);
+
+ember.style.animationDuration=
+(5+Math.random()*10)+"s";
+
+ember.style.animationDelay=
+(-Math.random()*12)+"s";
+
 embers.appendChild(ember);
+
 }
+
+
+/* =========================
+   SAKURA
+========================= */
 
 for(let i=0;i<28;i++){
+
 const petal=document.createElement("div");
+
 petal.className="petal";
-petal.style.left=Math.random()*100+"%";
-petal.style.top=(-Math.random()*30)+"%";
-petal.style.setProperty("--x",(Math.random()*180-90)+"px");
-petal.style.setProperty("--x2",(Math.random()*300-150)+"px");
-petal.style.animationDuration=(8+Math.random()*12)+"s";
-petal.style.animationDelay=(-Math.random()*15)+"s";
-petal.style.transform=`rotate(${Math.random()*360}deg)`;
+
+petal.style.left=
+Math.random()*100+"%";
+
+petal.style.top=
+(-Math.random()*30)+"%";
+
+petal.style.setProperty(
+"--x",
+(Math.random()*180-90)+"px"
+);
+
+petal.style.setProperty(
+"--x2",
+(Math.random()*300-150)+"px"
+);
+
+petal.style.animationDuration=
+(8+Math.random()*12)+"s";
+
+petal.style.animationDelay=
+(-Math.random()*15)+"s";
+
+petal.style.transform=
+`rotate(${Math.random()*360}deg)`;
+
 sakura.appendChild(petal);
+
 }
 
+
+/* =========================
+   CLOCK
+========================= */
+
 function updateTime(){
+
 const now=new Date();
+
 let hours=now.getHours();
-const minutes=String(now.getMinutes()).padStart(2,"0");
-const seconds=String(now.getSeconds()).padStart(2,"0");
-const period=hours>=12?"PM":"AM";
+
+const minutes=
+String(now.getMinutes()).padStart(2,"0");
+
+const seconds=
+String(now.getSeconds()).padStart(2,"0");
+
+const period=
+hours>=12?"PM":"AM";
+
 hours=hours%12||12;
-time.textContent=`${hours}:${minutes}:${seconds} ${period}`;
+
+time.textContent=
+`${hours}:${minutes}:${seconds} ${period}`;
+
 }
 
 updateTime();
+
 setInterval(updateTime,1000);
 
-const observer=new IntersectionObserver(entries=>{
+
+/* =========================
+   SCROLL REVEALS
+========================= */
+
+const observer=new IntersectionObserver(
+entries=>{
+
 entries.forEach(entry=>{
+
 if(entry.isIntersecting){
+
 entry.target.classList.add("visible");
+
 observer.unobserve(entry.target);
+
 }
+
 });
-},{threshold:.12});
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+},
+{
+threshold:.12
+}
+);
 
-document.querySelectorAll(".feature").forEach(card=>{
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
+
+
+/* =========================
+   GAME CARD TILT
+========================= */
+
+document
+.querySelectorAll(".game")
+.forEach(card=>{
+
 card.addEventListener("mousemove",e=>{
+
 const r=card.getBoundingClientRect();
-const x=(e.clientX-r.left)/r.width-.5;
-const y=(e.clientY-r.top)/r.height-.5;
+
+const x=
+(e.clientX-r.left)/r.width-.5;
+
+const y=
+(e.clientY-r.top)/r.height-.5;
+
 card.style.transform=
-`perspective(800px) rotateX(${y*-5}deg) rotateY(${x*5}deg) translateY(-5px)`;
+`perspective(800px)
+rotateX(${y*-5}deg)
+rotateY(${x*5}deg)
+translateY(-5px)`;
+
 });
+
+
 card.addEventListener("mouseleave",()=>{
+
 card.style.transform="";
+
 });
+
 });
+
+
+/* =========================
+   CLICK SPARKS
+========================= */
 
 let lastClick=0;
 
 document.addEventListener("click",e=>{
+
 const now=Date.now();
 
 if(now-lastClick<350)return;
 
 lastClick=now;
 
+
 for(let i=0;i<7;i++){
+
 const spark=document.createElement("div");
 
 spark.style.position="fixed";
-spark.style.left=e.clientX+"px";
-spark.style.top=e.clientY+"px";
+
+spark.style.left=
+e.clientX+"px";
+
+spark.style.top=
+e.clientY+"px";
+
 spark.style.width="2px";
+
 spark.style.height="2px";
+
 spark.style.background="#d32631";
-spark.style.boxShadow="0 0 9px #d32631";
+
+spark.style.boxShadow=
+"0 0 9px #d32631";
+
 spark.style.pointerEvents="none";
+
 spark.style.zIndex="9998";
 
-const angle=Math.random()*Math.PI*2;
-const distance=25+Math.random()*70;
-const x=Math.cos(angle)*distance;
-const y=Math.sin(angle)*distance;
 
-spark.animate([
+const angle=
+Math.random()*Math.PI*2;
+
+const distance=
+25+Math.random()*70;
+
+const x=
+Math.cos(angle)*distance;
+
+const y=
+Math.sin(angle)*distance;
+
+
+spark.animate(
+
+[
 {
 transform:"translate(0,0) scale(1)",
 opacity:1
 },
+
 {
-transform:`translate(${x}px,${y}px) scale(0)`,
+transform:
+`translate(${x}px,${y}px) scale(0)`,
 opacity:0
 }
-],{
-duration:300+Math.random()*400,
-easing:"cubic-bezier(.2,.8,.2,1)"
-});
+],
+
+{
+duration:
+300+Math.random()*400,
+
+easing:
+"cubic-bezier(.2,.8,.2,1)"
+}
+
+);
+
 
 document.body.appendChild(spark);
 
-setTimeout(()=>spark.remove(),800);
+setTimeout(
+()=>spark.remove(),
+800
+);
+
 }
+
 });
 
-const hero=document.querySelector(".hero-content");
+
+/* =========================
+   HERO PARALLAX
+========================= */
+
+const hero=
+document.querySelector(".hero-content");
 
 document.addEventListener("mousemove",e=>{
+
 if(window.innerWidth<800)return;
 
-const x=(e.clientX/window.innerWidth-.5);
-const y=(e.clientY/window.innerHeight-.5);
+const x=
+(e.clientX/window.innerWidth-.5);
+
+const y=
+(e.clientY/window.innerHeight-.5);
 
 hero.style.transform=
 `translate3d(${x*7}px,${y*-5}px,0)`;
+
 });
 
+
+/* =========================
+   HERO GLITCH
+========================= */
+
 setInterval(()=>{
-const h=document.querySelector(".welcome h1");
+
+const h=
+document.querySelector(".welcome h1");
 
 if(Math.random()<.22){
-h.style.transform="translateX(-3px)";
-h.style.textShadow="3px 0 #d32631,-3px 0 #241014";
+
+h.style.transform=
+"translateX(-3px)";
+
+h.style.textShadow=
+"3px 0 #d32631,-3px 0 #241014";
+
 
 setTimeout(()=>{
+
 h.style.transform="";
+
 h.style.textShadow="";
+
 },90);
+
 }
+
 },2200);
+
+
+/* =========================
+   CURRENT ARC PULSE
+========================= */
+
+const arcBars=
+document.querySelectorAll(".arc-bar span");
+
+setInterval(()=>{
+
+if(!arcBars.length)return;
+
+arcBars[0].style.filter=
+"brightness(1.45)";
+
+setTimeout(()=>{
+
+arcBars[0].style.filter="";
+
+},250);
+
+},3000);
+
 </script>
 
 </body>
